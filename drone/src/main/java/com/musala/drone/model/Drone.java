@@ -26,7 +26,7 @@ public class Drone {
     @Column(name = "model")
     private String model;
 
-    @Column(name = "battery_capacity",precision = 3, scale = 2)
+    @Column(name = "battery_capacity",precision = 3, scale = 1)
     private BigDecimal batteryCapacity;
 
     @Column(name = "weight_limit")

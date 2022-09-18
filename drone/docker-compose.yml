@@ -1,26 +1,5 @@
 
 version: "3.8"
-#services:
-#  server:
-#    build: .
-#    restart: "no"
-#    ports:
-#      - 8080:8080
-#    depends_on:
-#      - mysqldb
-#  mysqldb:
-#    platform: linux/x86_64
-#    image: "mysql:5.7"
-#    restart: "no"
-#    ports:
-#      - 3307:3306
-#    environment:
-#      - MYSQL_DATABASE= drone
-#      - MYSQL_PASSWORD=root12345
-#      - MYSQL_USERNAME=root
-#      - MYSQL_ROOT_PASSWORD=root12345
-
-
 services:
   docker-mysql:
     image: mysql:8
@@ -36,12 +15,14 @@ services:
     build: .
     image: drone_server:latest
     ports:
-      - 8091:8091
+      - 8080:8080
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/db?allowPublicKeyRetrieval=true&useSSL=false
+      - DATABASE_USER= root
+      - DATABASE_PASSWORD= root56789
+      - DATABASE_NAME= Mydrone
+      - DATABASE_PORT= 3306
 
     depends_on:
       - docker-mysql
-
 
 

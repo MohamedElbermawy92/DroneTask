@@ -25,11 +25,11 @@ public class ScheduledCheckBattery {
     @Scheduled(fixedRate = 6000)
     public void scheduleFixedRateTaskAsync() throws InterruptedException {
 
-        List<Drone> allDrones = droneRepository.findAll();
+        List<Drone> drones = droneRepository.findAll();
 
-        DecimalFormat format = new DecimalFormat("#%");
-        allDrones.stream().forEach(i->{
-            log.info("serial number : "+i.getSerialNumber()+" with battery capacity : "+format.format(i.getBatteryCapacity()));
+        DecimalFormat format = new DecimalFormat("##.#%");
+        drones.stream().forEach(drone->{
+            log.info("serial number : "+drone.getSerialNumber()+" with battery capacity : "+format.format(drone.getBatteryCapacity()));
         });
         Thread.sleep(6000);
 
